@@ -31,7 +31,6 @@ const App = () => {
             scrollTrigger: {
                 trigger: ".juice",
                 start: "+=2000",
-                end : "+=100",
                 scrub: 2,
             }
         });
@@ -159,7 +158,7 @@ const App = () => {
         ScrollTrigger.create({
             trigger: ".juice",
             start: "bottom top",
-            end: "+=2200",
+            end: "+=1850",
             pin: ".juice",
             scrub: 1,
         });
@@ -169,13 +168,16 @@ const App = () => {
     return (
         <main>
             <div className={"flex main-content"}>
+
             <NavBar />
+
+
                 <img className={"juice h-full drop-shadow-2xl"} src="/orangejuice.svg" alt="juice"/>
+
             <div className={"hero"}>
             </div>
 
             <div className={"hero"}>
-
                 <div className={"w-full h-[50%] "}>
                     <h1 className={"absolute"}>Fresh Taste</h1>
                     <h1 className={"absolute top-25 opacity-60"}>Fresh Taste</h1>
@@ -188,6 +190,8 @@ const App = () => {
                         <h5 className={"text-3xl text-white"}>Buy</h5>
                     </div>
                 </div>
+
+
             </div>
             </div>
 
@@ -195,12 +199,11 @@ const App = () => {
 
             <div className={"hero2 flex justify-center"}>
                 <div className={"w-full h-screen text-center items-center grid grid-cols-1 grid-rows-3 z-0 text-[300px]"}>
-
                     <h3 className={"first"}>Taste It.</h3>
                     <h3 className={'second'}>Feel It.</h3>
                     <h3 className={"third"}>Live It.</h3>
-
                 </div>
+
 
                     <div className={"con-text1 grid justify-center items-center gap-10 h-screen absolute  w-[30%] left-0"}>
                         <img className={"img1 absolute -left-40 bottom-0"} src="/orange.png" alt=""/>
@@ -209,6 +212,8 @@ const App = () => {
                     <h4 className={"z-2"}>2- No Sugar.</h4>
                     <h4>3- Pure. Fresh. Yours.</h4>
                     </div>
+
+
                     <div className={"con-text2 h-screen grid justify-center items-center gap-10 absolute w-[30%] right-0"}>
                         <img className={"img2 absolute -left-70 -z-2"}  src="/orangebig.png" alt=""/>
                         <img className={"img2 absolute rotate-45 -bottom-20 z-0"} src="/orange.png" alt=""/>
@@ -217,23 +222,49 @@ const App = () => {
                     <h4>5- No BS.</h4>
                     <h4 className={'z-2'}>6- Sip Nature. Feel Alive.</h4>
                     </div>
+
+
             </div>
 
-            <div className={"hero3 flex"}>
+
+            <div className={"hero3 w-full h-screen flex"}>
 
                 <h6 className={"p-5 absolute"}>SLS Orange & carrots</h6>
-                <img className={"p-5 rotate-180 w-21"} src="/arrow-right.svg" alt=""/>
+
+                <div className={"w-full h-screen absolute flex items-end"}>
+                <div className={"w-full h-20 z-3 flex justify-evenly items-center "}>
+
+                    <div className={"flex gap-5"}>
+                        <img className={'cursor-pointer'} src="/orange.svg" alt=""/>
+                        <img className={'cursor-pointer'} src="/mango.svg" alt=""/>
+                        <img className={'cursor-pointer'} src="/guava.svg" alt=""/>
+                        <img className={'cursor-pointer'} src="/pinapple.svg" alt=""/>
+                    </div>
 
 
+                        <h6 className={'pl-20 text-center'}>Taste It. Feel It. Live It.</h6>
+                    <div className={"flex justify-end"}>
+                        <p className={"w-[60%]"}>
+                            Joy Your taste buds
+                            for only 50 SP</p>
+                    </div>
 
 
-                <div className={"con-text1 grid justify-center items-center z-0  gap-10 h-screen  w-[30%]"}>
+                </div>
+                </div>
+
+
+                <div className={"con-text1 z-0  gap-10 h-screen w-[30%]"}>
                 <img className={"img1 relative -left-40 rotate-90 bottom-0"} src="/orange.png" alt=""/>
                 <img  className={"img1 relative rotate-45 scale-50 bottom-30 z-0"} src="/carrot.png" alt=""/>
                 </div>
+
+
                 <div className={"w-[40%] h-screen flex items-center justify-center "}>
                     <img className={"img2 w-[40%] absolute z-2"}  src="/orangebig.png" alt=""/>
                 </div>
+
+
                 <div className={"con-text2 h-screen w-[30%]"}>
                     <img  className={"img2 relative bottom-10 scale-75 -rotate-12 "} src="/carrot.png" alt=""/>
                     <img className={"img2 relative rotate-12 bottom-20 z-0"} src="/orange.png" alt=""/>
