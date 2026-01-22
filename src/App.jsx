@@ -62,7 +62,6 @@ const App = () => {
 
     // handle change
     useEffect(() => {
-        console.log('Flavor changed to:', currentFlavor, flavor.name);
 
         gsap.set([".juice", ".img1","img2" , ".name"], {
             opacity: 0,
@@ -72,7 +71,6 @@ const App = () => {
             opacity: 1,
             duration: 0.3,
             delay: 0.05,
-            onComplete: () => console.log('Fade in complete')
         });
     }, [currentFlavor]);
 
@@ -280,8 +278,8 @@ const App = () => {
             <div className={"hero3 w-full h-screen flex overflow-hidden"}>
 
                 <div className={'w-full flex justify-between items-center h-screen absolute z-1'}>
-                    <img onClick={prevFlavor} className={"rotate-180 max-md:w-15 w-21 h-21 cursor-pointer hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
-                    <img onClick={nextFlavor} className={"w-21 cursor-pointer max-md:w-15 h-21 hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
+                    <img onClick={prevFlavor} className={"rotate-180 max-md:w-15 arrow w-21 h-21 cursor-pointer hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
+                    <img onClick={nextFlavor} className={"w-21 cursor-pointer max-md:w-15 arrow h-21 hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
                 </div>
 
 
@@ -313,7 +311,7 @@ const App = () => {
                 <div className={"w-full h-screen absolute flex items-end"}>
                     <div className={"w-full z-3 flex justify-evenly items-center "}>
 
-                        <div className={"flex gap-5 z-40"}>
+                        <div className={"flex colors gap-5 z-40"}>
                             {flavors.map((f, index) => (
                                 <img
                                     key={index}

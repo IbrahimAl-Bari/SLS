@@ -133,9 +133,94 @@ pre {
 }
 
 
+@media (min-width: 250px) and (max-width: 400px) {
+    h1 {
+        font-family: "Bebas Neue" , sans-serif;
+        color: white;
+        font-size: 40px;
+        margin-top: 3rem;
+    }
+    h2 {
+        font-family: "Bebas Neue" , sans-serif;
+        font-size: 40px;
+        color: white;
+    }
+    h3 {
+        font-family: "Bebas Neue" , sans-serif;
+        font-size: 100px;
+        color: white;
+    }
+    h4 {
+        font-family: "Montserrat" , sans-serif;
+        color: white;
+        font-size: 15px;
+    }
+    h5 {
+        font-family: "Montserrat" , sans-serif;
+        color: white;
+    }
+    h6 {
+        font-family: "Bebas Neue" , sans-serif;
+        display: none;
+        color: white;
+    }
+    p {
+        font-family: "Bebas Neue" , sans-serif;
+        color: white;
+        font-size: 14px;
+    }
+    .colors {
+        height: 2rem;
+    }
+    .arrow {
+        height: 2rem;
+    }
+}
 
+@media (min-width: 400px) and (max-width: 480px) {
+    h1 {
+        font-family: "Bebas Neue" , sans-serif;
+        color: white;
+        font-size: 50px;
+        margin-top: 3rem;
+    }
+    h2 {
+        font-family: "Bebas Neue" , sans-serif;
+        font-size: 40px;
+        color: white;
+    }
+    h3 {
+        font-family: "Bebas Neue" , sans-serif;
+        font-size: 100px;
+        color: white;
+    }
+    h4 {
+        font-family: "Montserrat" , sans-serif;
+        color: white;
+    }
+    h5 {
+        font-family: "Montserrat" , sans-serif;
+        color: white;
+    }
+    h6 {
+        font-family: "Bebas Neue" , sans-serif;
+        display: none;
+        color: white;
+    }
+    p {
+        font-family: "Bebas Neue" , sans-serif;
+        color: white;
+        font-size: 15px;
+    }
+    .colors {
+        height: 3rem;
+    }
+    .arrow {
+        height: 3rem;
+    }
+}
 
-@media (min-width: 320px) and (max-width: 640px) {
+@media (min-width: 480px) and (max-width: 640px) {
     h1 {
         font-family: "Bebas Neue" , sans-serif;
         font-size: 60px;
