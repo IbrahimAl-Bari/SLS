@@ -10,7 +10,7 @@ font-family: "Bebas Neue";
 }
 body {
     overflow-x: hidden;
-    background-color: #FF8C42;
+    background-color: #E85D30;
 }
 h1 {
     font-family: "Bebas Neue" , sans-serif;
@@ -55,17 +55,41 @@ p {
     border-radius: 50px;
 }
 .hero {
-    width: 50%;
+    width: 100%;
     height: 100vh;
-    background: radial-gradient(circle at center, #E85D30, #FF8C42);
+    --inner: #E85D30;
+    --outer: #FF8C42;
+
+    background: radial-gradient(
+            circle at center,
+            var(--inner) 50%,
+            var(--outer) 100%
+    );
 }
 .hero2 {
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle at center, #E85D30, #FF8C42);
+    --inner: #E85D30;
+    --outer: #FF8C42;
+
+    background: radial-gradient(
+            circle at center,
+            var(--inner) 50%,
+            var(--outer) 100%
+    );
 }
 .hero3 {
-    background: radial-gradient(circle at center, #E85D30, #FF8C42);
+    --inner: #ffffff;
+    --outer: #000000;
+
+    background: radial-gradient(
+            circle at center,
+            var(--inner) 50%,
+            var(--outer) 100%
+    );
+}
+.hero3-inner {
+    will-change: transform, opacity;
 }
 .juice {
     z-index: 10;

@@ -18,33 +18,57 @@ const App = () => {
             name: "Orange & Carrots",
             image: "/orangejuice.svg",
             bigImage: "/orangebig.png",
+            smphoto1: "/orange.png",
+            smphoto2: "/carrot.png",
             icon: "/orange.svg",
             tagline: "Taste It. Feel It. Live It.",
-            description: "Joy Your taste buds for only 50 SP"
+            description: "Joy Your taste buds for only 50 SP",
+            bg: {
+                inner: "#E85D30",
+                outer: "#FF8C42"
+            },
+            c: "#FFB627"
         },
         {
             name: "Mango Paradise",
-            image: "/mango.webp", // You'll need this
-            bigImage: "/mango.png",
+            image: "/mangojuice.svg", // You'll need this
+            bigImage: "/mangobig.png",
+            smphoto1: "/mango.png",
             icon: "/mango.svg",
-            tagline: "Sweet Tropical Vibes.",
-            description: "Pure mango goodness for 55 SP"
+            tagline: "Taste It. Feel It. Live It.",
+            description: "Joy Your taste buds for only 50 SP",
+            bg: {
+                inner: "#FFA751",
+                outer: "#FFB553"
+            },
+            c: "#FFF5CC"
         },
         {
             name: "Guava Dream",
-            image: "/guava.webp", // You'll need this
-            bigImage: "/guava.png",
+            image: "/guavajuice.svg", // You'll need this
+            smphoto1: "/guava.png",
             icon: "/guava.svg",
-            tagline: "Island Paradise.",
-            description: "Exotic flavor for 52 SP"
+            tagline: "Taste It. Feel It. Live It.",
+            description: "Joy Your taste buds for only 50 SP",
+            bg: {
+                inner: "#C4B79C",
+                outer: "#F4E1B8"
+            },
+            c: "#FFC9D9"
         },
         {
             name: "Pineapple Burst",
-            image: "/pineapple.webp", // You'll need this
-            bigImage: "/pineapple.png",
+            image: "/pineapplejuice.svg", // You'll need this
+            bigImage: "/pineapplebig.png",
+            smphoto1: "/pineapple.png",
             icon: "/pineapple.svg",
-            tagline: "Golden Sunshine.",
-            description: "Tropical energy for 53 SP"
+            tagline: "Taste It. Feel It. Live It.",
+            description: "Joy Your taste buds for only 50 SP",
+            bg: {
+                inner: "#FFBB5F",
+                outer: "#FFCA3A"
+            },
+            c: "#FFF5CC"
         }
     ];
 
@@ -52,29 +76,64 @@ const App = () => {
     const flavor = flavors[currentFlavor];
 
     const changeFlavor = (index) => {
-        console.log('Changing from', currentFlavor, 'to', index);
         if (index === currentFlavor) return;
 
-        // Fade out
-        gsap.to([".juice", ".hero3-big-image", ".hero3-title", ".hero3-tagline", ".hero3-description"], {
-            opacity: 0,
-            duration: 0.3,
-            onComplete: () => {
-                // Update state
-                setCurrentFlavor(index);
-            }
+        const nextFlavor = flavors[index];
+
+        const tl = gsap.timeline({
+            defaults: { ease: "power3.inOut" }
         });
+
+        // OUT: slide left + fade
+        tl.to([".hero2-inner", ".hero3-inner",".hero-inner"], {
+            x: -200,
+            opacity: 0,
+            duration: 0.35,
+        });
+
+        // CHANGE CONTENT + BACKGROUND
+        tl.add(() => {
+            setCurrentFlavor(index);
+        });
+
+        // PREPARE new content (off-screen right)
+        tl.set([".hero2-inner", ".hero3-inner",".hero-inner"], {
+            x: 200,
+        });
+
+        // BACKGROUND MORPH
+        tl.to([".hero3" , ".hero2", ".hero"], {
+            "--inner": nextFlavor.bg.inner,
+            "--outer": nextFlavor.bg.outer,
+            duration: 0.45,
+        }, "<");
+
+        // IN: slide in + fade
+        tl.to([".hero2-inner", ".hero3-inner", ".hero-inner"], {
+            x: 0,
+            opacity: 1,
+            duration: 0.45,
+        }, "<");
     };
+
+    useEffect(() => {
+        gsap.set([".hero3" , ".hero2" , ".hero"], {
+            "--inner": flavor.bg.inner,
+            "--outer": flavor.bg.outer,
+        });
+    }, []);
+
+
 
 // Add this useEffect to handle fade in after state change
     useEffect(() => {
         console.log('Flavor changed to:', currentFlavor, flavor.name);
         // Fade in when flavor changes
-        gsap.set([".juice", ".hero3-big-image", ".hero3-title", ".hero3-tagline", ".hero3-description"], {
-            opacity: 0
+        gsap.set([".juice", ".img1","img2" , ".name"], {
+            opacity: 0,
         });
 
-        gsap.to([".juice", ".hero3-big-image", ".hero3-title", ".hero3-tagline", ".hero3-description"], {
+        gsap.to([".juice", ".img1","img2" , ".name"], {
             opacity: 1,
             duration: 0.3,
             delay: 0.05,
@@ -125,17 +184,17 @@ const App = () => {
 
         juiceTl.to(".juice", {
             y: 700,
-            xPercent: 74,
+            xPercent: 50,
             yPercent: -10,
-            rotation: 18,
+            rotation: 30,
             scale: 1,
         });
         juiceTl.to(".juice", {
-            rotation: -18,
+            rotation: -10,
             scrollTrigger: {
                 trigger: ".juice",
-                start: "+=2000",
-                scrub: 2,
+                start: "+=1800",
+                scrub: 1,
             }
         });
 
@@ -235,7 +294,7 @@ const App = () => {
             </div>
 
             <div className={"hero"}>
-                <div className={"w-full h-[50%] "}>
+                <div className={"w-full h-[50%] hero-inner "}>
                     <h1 className={"absolute"}>Fresh Taste</h1>
                     <h1 className={"absolute top-25 opacity-60"}>Fresh Taste</h1>
                     <h1 className={"absolute top-50 opacity-20"}>Fresh Taste</h1>
@@ -243,7 +302,7 @@ const App = () => {
 
                 <div className={"w-full h-[50%] flex justify-center items-center"}>
                 <h2 className={'mb-15'}>try now</h2>
-                    <div className={"w-30 h-15 hover:bg-[#FF9F1C] transition-all cursor-pointer bg-[#FFB627] absolute bottom-15 rounded-4xl flex justify-center items-center"}>
+                    <div style={{backgroundColor: flavor.c }} className={"w-30 h-15 hover:scale-110 transition-all cursor-pointer absolute bottom-15 rounded-4xl flex justify-center items-center"}>
                         <h5 className={"text-3xl text-white"}>Buy</h5>
                     </div>
                 </div>
@@ -255,7 +314,7 @@ const App = () => {
 
 
             <div className={"hero2 flex justify-center"}>
-                <div className={"w-full h-screen text-center items-center grid grid-cols-1 grid-rows-3 z-0 text-[300px]"}>
+                <div className={"w-full h-screen hero2-inner text-center items-center grid grid-cols-1 grid-rows-3 z-0 text-[300px]"}>
                     <h3 className={"first"}>Taste It.</h3>
                     <h3 className={'second'}>Feel It.</h3>
                     <h3 className={"third"}>Live It.</h3>
@@ -263,8 +322,8 @@ const App = () => {
 
 
                     <div className={"con-text1 grid justify-center items-center gap-10 h-screen absolute  w-[30%] left-0"}>
-                        <img className={"img1 absolute -left-40 bottom-0"} src="/orange.png" alt=""/>
-                        <img  className={"img1 absolute rotate-45 scale-50 top-0 z-0"} src="/carrot.png" alt=""/>
+                        <img className={"img1 absolute -left-40 bottom-0"} src={flavor.smphoto1} alt=""/>
+                        <img  className={"img1 absolute rotate-45 scale-50 top-0 z-0"} src={flavor.smphoto2 ? flavor.smphoto2 : flavor.smphoto1} alt=""/>
                     <h4 className={"z-2"}>1- Taste It. Feel It. Live It.</h4>
                     <h4 className={"z-2"}>2- No Sugar.</h4>
                     <h4>3- Pure. Fresh. Yours.</h4>
@@ -272,9 +331,9 @@ const App = () => {
 
 
                     <div className={"con-text2 h-screen grid justify-center items-center gap-10 absolute w-[30%] right-0"}>
-                        <img className={"img2 absolute -left-70 -z-2"}  src="/orangebig.png" alt=""/>
-                        <img className={"img2 absolute rotate-45 -bottom-20 z-0"} src="/orange.png" alt=""/>
-                        <img  className={"img2 absolute scale-75 -rotate-12 top-0"} src="/carrot.png" alt=""/>
+                        <img className={"img2 absolute -left-70 -z-2"}  src={flavor.bigImage} alt=""/>
+                        <img className={"img2 absolute rotate-45 -bottom-20 z-0"} src={flavor.smphoto1} alt=""/>
+                        <img  className={"img2 absolute scale-75 -rotate-12 top-0"} src={flavor.smphoto2 ? flavor.smphoto2 : flavor.smphoto1} alt=""/>
                     <h4>4- Real Juice. Real Energy.</h4>
                     <h4>5- No BS.</h4>
                     <h4 className={'z-2'}>6- Sip Nature. Feel Alive.</h4>
@@ -284,8 +343,7 @@ const App = () => {
             </div>
 
 
-            <div className={"hero3 w-full h-screen flex"}>
-
+            <div className={"hero3 w-full h-screen flex overflow-hidden"}>
 
                 <div className={'w-full flex justify-between items-center h-screen absolute z-1'}>
                     <img onClick={prevFlavor} className={"rotate-180 w-21 h-21 cursor-pointer hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
@@ -293,62 +351,66 @@ const App = () => {
                 </div>
 
 
-                <h6 className={"p-5 absolute"}>SLS {flavor.name}</h6>
-
-                <div className={"w-full h-screen absolute flex items-end"}>
-                <div className={"w-full h-20 z-3 flex justify-evenly items-center "}>
-
-                    <div className={"flex gap-5 z-40"}>
-                        {flavors.map((f, index) => (
-                            <img
-                                key={index}
-                                className={`cursor-pointer z-10 transition-all ${
-                                    currentFlavor === index
-                                        ? 'scale-110 opacity-100 rounded-full'
-                                        : 'scale-100 opacity-60 hover:opacity-100 hover:scale-110'
-                                }`}
-                                src={f.icon}
-                                alt={f.name}
-                                onClick={() => changeFlavor(index)}
-                            />
-                        ))}
-                    </div>
+                <div className={"hero3-inner overflow-hidden w-full h-full flex"}>
 
 
-                    {/* Tagline */}
-                    <h6 className="hero3-tagline pl-20 text-center transition-opacity duration-300">
-                        {flavor.tagline}
-                    </h6>
-
-                    {/* Description */}
-                    <div className="flex justify-end">
-                        <p className="hero3-description w-[60%] transition-opacity duration-300">
-                            {flavor.description}
-                        </p>
-                    </div>
+                <h6 className={"name p-5 absolute"}>SLS {flavor.name}</h6>
 
 
-                </div>
-                </div>
 
 
                 <div className={"con-text1 z-0  gap-10 h-screen w-[30%]"}>
-                <img className={"img1 relative -left-40 rotate-90 bottom-0"} src="/orange.png" alt=""/>
-                <img  className={"img1 relative rotate-45 scale-50 bottom-30 z-0"} src="/carrot.png" alt=""/>
+                <img className={"img1 relative -left-20 rotate-90 bottom-0"} src={flavor.smphoto1} alt=""/>
+                <img  className={"img1 relative rotate-45 z-0"} src={flavor.smphoto2 ? flavor.smphoto2 : flavor.smphoto1} alt=""/>
                 </div>
 
 
                 <div className={"w-[40%] h-screen flex items-center justify-center "}>
-                    <img className={"img2 w-[40%] absolute z-2"}  src="/orangebig.png" alt=""/>
+                    <img className={"img2 w-[40%] absolute z-2"}  src={flavor.bigImage} alt=""/>
                 </div>
 
 
                 <div className={"con-text2 h-screen w-[30%]"}>
-                    <img  className={"img2 relative bottom-10 scale-75 -rotate-12 "} src="/carrot.png" alt=""/>
-                    <img className={"img2 relative rotate-12 bottom-20 z-0"} src="/orange.png" alt=""/>
+                    <img  className={"img1 relative scale-75 -rotate-12 "} src={flavor.smphoto2 ? flavor.smphoto2 : flavor.smphoto1} alt=""/>
+                    <img className={"img1 relative rotate-12 top-20 z-0"} src={flavor.smphoto1} alt=""/>
                 </div>
 
+                </div>
+                <div className={"w-full h-screen absolute flex items-end"}>
+                    <div className={"w-full h-20 z-3 flex justify-evenly items-center "}>
 
+                        <div className={"flex gap-5 z-40"}>
+                            {flavors.map((f, index) => (
+                                <img
+                                    key={index}
+                                    className={`cursor-pointer z-10 transition-all ${
+                                        currentFlavor === index
+                                            ? 'scale-110 opacity-100 rounded-full'
+                                            : 'scale-100 opacity-60 hover:opacity-100 hover:scale-110'
+                                    }`}
+                                    src={f.icon}
+                                    alt={f.name}
+                                    onClick={() => changeFlavor(index)}
+                                />
+                            ))}
+                        </div>
+
+
+                        {/* Tagline */}
+                        <h6 className=" pl-20 text-center transition-opacity duration-300">
+                            {flavor.tagline}
+                        </h6>
+
+                        {/* Description */}
+                        <div className="flex justify-end">
+                            <p className=" w-[60%] transition-opacity duration-300">
+                                {flavor.description}
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
         </main>
     )
