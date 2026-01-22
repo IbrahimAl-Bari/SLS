@@ -68,7 +68,39 @@ p {
     background: radial-gradient(circle at center, #E85D30, #FF8C42);
 }
 .juice {
-    z-index: 100;
+    z-index: 10;
     position: absolute;
+    transform: rotateX(1deg) rotateY(-1deg);
+
+    filter:
+            drop-shadow(0 20px 25px rgba(0, 0, 0, 0.35))
+            drop-shadow(0 5px 10px rgba(0, 0, 0, 0.25));
+
 }
+.juice::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.5),
+            transparent 60%
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+    border-radius: 12px;
+}
+.juice::after {
+    content: "";
+    position: absolute;
+    width: 85%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(18px);
+    z-index: -1;
+}
+
 
