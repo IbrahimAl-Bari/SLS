@@ -10,7 +10,7 @@ font-family: "Bebas Neue";
 }
 body {
     overflow-x: hidden;
-    background-color: #E85D30;
+    background-color: #0c527a;
 }
 h1 {
     font-family: "Bebas Neue" , sans-serif;
@@ -50,7 +50,7 @@ p {
 }
 
 .buy {
-    font-family: "Bebas Neue" , sans-serif;
+    font-family: "Bebas Neue", sans-serif;
     background-color: #FFB627;
     border-radius: 50px;
 }
@@ -59,12 +59,8 @@ p {
     height: 100vh;
     --inner: #E85D30;
     --outer: #FF8C42;
-
-    background: radial-gradient(
-            circle at center,
-            var(--inner) 50%,
-            var(--outer) 100%
-    );
+    background: radial-gradient(circle at center, var(--inner) 50%, var(--outer) 100%);
+    overflow: hidden;
 }
 .hero2 {
     width: 100%;
@@ -88,6 +84,8 @@ p {
             var(--outer) 100%
     );
 }
+
+
 .hero3-inner {
     will-change: transform, opacity;
 }
@@ -126,5 +124,4 @@ p {
     filter: blur(18px);
     z-index: -1;
 }
-
 

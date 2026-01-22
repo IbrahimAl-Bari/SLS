@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
 
-
     // flavor state
     const [currentFlavor, setCurrentFlavor] = useState(0);
     // get current flavor
@@ -129,8 +128,8 @@ const App = () => {
             rotation: -10,
             scrollTrigger: {
                 trigger: ".juice",
-                start: "+=1800",
-                scrub: 1,
+                start: "+=1900",
+                scrub: 2,
             }
         });
 
@@ -279,6 +278,7 @@ const App = () => {
 
 
             <div className={"hero3 w-full h-screen flex overflow-hidden"}>
+
 
                 <div className={'w-full flex justify-between items-center h-screen absolute z-1'}>
                     <img onClick={prevFlavor} className={"rotate-180 w-21 h-21 cursor-pointer hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
