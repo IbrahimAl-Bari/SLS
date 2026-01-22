@@ -3,78 +3,20 @@ import NavBar from './components/NavBar'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {flavors} from "./constants"
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
 
 
-    // Flavor state
+    // flavor state
     const [currentFlavor, setCurrentFlavor] = useState(0);
-
-    // Flavor data
-    const flavors = [
-        {
-            name: "Orange & Carrots",
-            image: "/orangejuice.svg",
-            bigImage: "/orangebig.png",
-            smphoto1: "/orange.png",
-            smphoto2: "/carrot.png",
-            icon: "/orange.svg",
-            tagline: "Taste It. Feel It. Live It.",
-            description: "Joy Your taste buds for only 50 SP",
-            bg: {
-                inner: "#E85D30",
-                outer: "#FF8C42"
-            },
-            c: "#FFB627"
-        },
-        {
-            name: "Mango Paradise",
-            image: "/mangojuice.svg", // You'll need this
-            bigImage: "/mangobig.png",
-            smphoto1: "/mango.png",
-            icon: "/mango.svg",
-            tagline: "Taste It. Feel It. Live It.",
-            description: "Joy Your taste buds for only 50 SP",
-            bg: {
-                inner: "#FFA751",
-                outer: "#FFB553"
-            },
-            c: "#FFF5CC"
-        },
-        {
-            name: "Guava Dream",
-            image: "/guavajuice.svg", // You'll need this
-            smphoto1: "/guava.png",
-            icon: "/guava.svg",
-            tagline: "Taste It. Feel It. Live It.",
-            description: "Joy Your taste buds for only 50 SP",
-            bg: {
-                inner: "#C4B79C",
-                outer: "#F4E1B8"
-            },
-            c: "#FFC9D9"
-        },
-        {
-            name: "Pineapple Burst",
-            image: "/pineapplejuice.svg", // You'll need this
-            bigImage: "/pineapplebig.png",
-            smphoto1: "/pineapple.png",
-            icon: "/pineapple.svg",
-            tagline: "Taste It. Feel It. Live It.",
-            description: "Joy Your taste buds for only 50 SP",
-            bg: {
-                inner: "#FFBB5F",
-                outer: "#FFCA3A"
-            },
-            c: "#FFF5CC"
-        }
-    ];
-
-    // Get current flavor
+    // get current flavor
     const flavor = flavors[currentFlavor];
 
+
+    // change flavor
     const changeFlavor = (index) => {
         if (index === currentFlavor) return;
 
@@ -84,31 +26,26 @@ const App = () => {
             defaults: { ease: "power3.inOut" }
         });
 
-        // OUT: slide left + fade
         tl.to([".hero2-inner", ".hero3-inner",".hero-inner"], {
             x: -200,
             opacity: 0,
             duration: 0.35,
         });
 
-        // CHANGE CONTENT + BACKGROUND
         tl.add(() => {
             setCurrentFlavor(index);
         });
 
-        // PREPARE new content (off-screen right)
         tl.set([".hero2-inner", ".hero3-inner",".hero-inner"], {
             x: 200,
         });
 
-        // BACKGROUND MORPH
         tl.to([".hero3" , ".hero2", ".hero"], {
             "--inner": nextFlavor.bg.inner,
             "--outer": nextFlavor.bg.outer,
             duration: 0.45,
         }, "<");
 
-        // IN: slide in + fade
         tl.to([".hero2-inner", ".hero3-inner", ".hero-inner"], {
             x: 0,
             opacity: 1,
@@ -124,11 +61,10 @@ const App = () => {
     }, []);
 
 
-
-// Add this useEffect to handle fade in after state change
+    // handle change
     useEffect(() => {
         console.log('Flavor changed to:', currentFlavor, flavor.name);
-        // Fade in when flavor changes
+
         gsap.set([".juice", ".img1","img2" , ".name"], {
             opacity: 0,
         });
@@ -139,31 +75,29 @@ const App = () => {
             delay: 0.05,
             onComplete: () => console.log('Fade in complete')
         });
-    }, [currentFlavor]); // Runs when currentFlavor changes
+    }, [currentFlavor]);
 
-    // Arrow navigation
+    // arrow nav
     const nextFlavor = () => {
         const next = (currentFlavor + 1) % flavors.length;
         changeFlavor(next);
     };
-
     const prevFlavor = () => {
         const prev = (currentFlavor - 1 + flavors.length) % flavors.length;
         changeFlavor(prev);
     };
 
-    // Keyboard navigation
+    // keyboard nav
     useEffect(() => {
         const handleKeyPress = (e) => {
             if (e.key === 'ArrowRight') nextFlavor();
             if (e.key === 'ArrowLeft') prevFlavor();
         };
-
         window.addEventListener('keydown', handleKeyPress);
         return () => window.removeEventListener('keydown', handleKeyPress);
     }, [currentFlavor]);
 
-    // Scroll to top on load
+    // scroll top
     useEffect(() => {
         if ("scrollRestoration" in window.history) {
             window.history.scrollRestoration = "manual";
@@ -171,8 +105,11 @@ const App = () => {
         window.scrollTo(0, 0);
     }, []);
 
+
+
+
     useGSAP(() => {
-        // Juice animation
+        // juice animation
         const juiceTl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".juice",
@@ -181,7 +118,6 @@ const App = () => {
                 scrub: 2,
             },
         });
-
         juiceTl.to(".juice", {
             y: 700,
             xPercent: 50,
@@ -198,7 +134,8 @@ const App = () => {
             }
         });
 
-        // First section
+
+        // hero2
         gsap.timeline({
             scrollTrigger: {
                 trigger: ".hero2",
@@ -208,7 +145,6 @@ const App = () => {
             },
         }).fromTo(".first", { x: -700, opacity: 0 }, { x: 0, opacity: 1 });
 
-        // Second section
         gsap.timeline({
             scrollTrigger: {
                 trigger: ".second",
@@ -218,7 +154,6 @@ const App = () => {
             },
         }).fromTo(".second", { x: 700, opacity: 0 }, { x: 0, opacity: 1 });
 
-        // Third section
         gsap.timeline({
             scrollTrigger: {
                 trigger: ".third",
@@ -228,7 +163,7 @@ const App = () => {
             },
         }).fromTo(".third", { x: -700, opacity: 0 }, { x: 0, opacity: 1 });
 
-        // Scale animations
+        // scale animations
         gsap.timeline({
             scrollTrigger: { trigger: ".first", start: "center center", scrub: 2 },
         }).to(".first", { scale: 0.7 });
@@ -255,7 +190,7 @@ const App = () => {
             scrollTrigger: { trigger: ".img2", start: "center center", scrub: 2 },
         }).from(".img2", { x: 700, opacity: 0, stagger: 0.3 });
 
-        // Pinning
+        // pin
         ScrollTrigger.create({
             trigger: ".hero2",
             start: "center center",
