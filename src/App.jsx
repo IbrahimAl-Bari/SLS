@@ -217,7 +217,7 @@ const App = () => {
 
                 <div className="juice-wrapper">
                     <img
-                        className="juice h-full drop-shadow-2xl"
+                        className="juice w-[50%] h-full drop-shadow-2xl"
                         src={flavor.image}
                         alt={flavor.name}
                     />
@@ -228,7 +228,7 @@ const App = () => {
             </div>
 
             <div className={"hero"}>
-                <div className={"w-full h-[50%] hero-inner "}>
+                <div className={"w-full h-[50%] hero-inner"}>
                     <h1 className={"absolute"}>Fresh Taste</h1>
                     <h1 className={"absolute top-25 opacity-60"}>Fresh Taste</h1>
                     <h1 className={"absolute top-50 opacity-20"}>Fresh Taste</h1>
@@ -255,7 +255,7 @@ const App = () => {
                 </div>
 
 
-                    <div className={"con-text1 grid justify-center items-center gap-10 h-screen absolute  w-[30%] left-0"}>
+                    <div className={"con-text1 grid justify-center items-center gap-10 h-screen absolute z-1  w-[30%] left-0"}>
                         <img className={"img1 absolute -left-40 bottom-0"} src={flavor.smphoto1} alt=""/>
                         <img  className={"img1 absolute rotate-45 scale-50 top-0 z-0"} src={flavor.smphoto2 ? flavor.smphoto2 : flavor.smphoto1} alt=""/>
                     <h4 className={"z-2"}>1- Taste It. Feel It. Live It.</h4>
@@ -279,10 +279,9 @@ const App = () => {
 
             <div className={"hero3 w-full h-screen flex overflow-hidden"}>
 
-
                 <div className={'w-full flex justify-between items-center h-screen absolute z-1'}>
-                    <img onClick={prevFlavor} className={"rotate-180 w-21 h-21 cursor-pointer hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
-                    <img onClick={nextFlavor} className={"w-21 cursor-pointer h-21 hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
+                    <img onClick={prevFlavor} className={"rotate-180 max-md:w-15 w-21 h-21 cursor-pointer hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
+                    <img onClick={nextFlavor} className={"w-21 cursor-pointer max-md:w-15 h-21 hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
                 </div>
 
 
@@ -312,7 +311,7 @@ const App = () => {
 
                 </div>
                 <div className={"w-full h-screen absolute flex items-end"}>
-                    <div className={"w-full h-20 z-3 flex justify-evenly items-center "}>
+                    <div className={"w-full z-3 flex justify-evenly items-center "}>
 
                         <div className={"flex gap-5 z-40"}>
                             {flavors.map((f, index) => (
@@ -332,7 +331,7 @@ const App = () => {
 
 
                         {/* Tagline */}
-                        <h6 className=" pl-20 text-center transition-opacity duration-300">
+                        <h6 className="transition-opacity duration-300">
                             {flavor.tagline}
                         </h6>
 
