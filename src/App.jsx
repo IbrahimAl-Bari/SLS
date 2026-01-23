@@ -245,7 +245,7 @@ const App = () => {
 
 
 
-            <div className={"hero2 flex justify-center"}>
+            <div className={"hero2 flex justify-center noise-bg"}>
                 <div className={"w-full h-screen hero2-inner text-center items-center grid grid-cols-1 grid-rows-3 z-0 text-[300px]"}>
                     <h3 className={"first"}>Taste It.</h3>
                     <h3 className={'second'}>Feel It.</h3>
@@ -275,7 +275,7 @@ const App = () => {
             </div>
 
 
-            <div className={"hero3 w-full h-screen flex overflow-hidden"}>
+            <div className={"hero3 noise-bg w-full h-screen flex overflow-hidden"}>
 
                 <div className={'w-full flex justify-between items-center h-screen absolute z-1'}>
                     <img onClick={prevFlavor} className={"rotate-180 max-md:w-15 arrow w-21 h-21 cursor-pointer hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
