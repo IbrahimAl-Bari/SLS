@@ -119,15 +119,15 @@ const App = () => {
             y: 700,
             xPercent: 50,
             yPercent: -10,
-            rotation: 30,
-            scale: 1,
+            rotate: 30,
         });
         juiceTl.to(".juice", {
-            rotation: -10,
+            rotate: 60,
             scrollTrigger: {
                 trigger: ".juice",
-                start: "+=1900",
+                start: "+=1850",
                 scrub: 2,
+                markers: true,
             }
         });
 
@@ -234,7 +234,7 @@ const App = () => {
 
                 <div className={"w-full h-[50%] flex justify-center items-center"}>
                 <h2 className={'mb-15'}>try now</h2>
-                    <div style={{backgroundColor: flavor.c }} className={"w-30 h-15 hover:scale-110 transition-all cursor-pointer absolute bottom-15 rounded-4xl flex justify-center items-center"}>
+                    <div style={{backgroundColor: flavor.c }} className={"w-30 h-15 buy hover:scale-110 duration-200 cursor-pointer absolute bottom-15 rounded-4xl flex justify-center items-center"}>
                         <h5 className={"text-3xl text-white"}>Buy</h5>
                     </div>
                 </div>
@@ -278,8 +278,8 @@ const App = () => {
             <div className={"hero3 noise-bg w-full h-screen flex overflow-hidden"}>
 
                 <div className={'w-full flex justify-between items-center h-screen absolute z-1'}>
-                    <img onClick={prevFlavor} className={"rotate-180 max-md:w-15 arrow w-21 h-21 cursor-pointer hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
-                    <img onClick={nextFlavor} className={"w-21 cursor-pointer max-md:w-15 arrow h-21 hover:scale-110 transition-all duration-200"} src="/arrow-right.svg" alt=""/>
+                    <img onClick={prevFlavor} className={"rotate-180 max-md:w-15 arrow w-21 h-21 cursor-pointer hover:scale-110 transition-all duration-200 z-150"} src="/arrow-right.svg" alt=""/>
+                    <img onClick={nextFlavor} className={"w-21 cursor-pointer max-md:w-15 arrow h-21 hover:scale-110 transition-all duration-200 z-150"} src="/arrow-right.svg" alt=""/>
                 </div>
 
 

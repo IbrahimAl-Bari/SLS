@@ -15,6 +15,11 @@ body {
     overflow-x: hidden;
 }
 
+.hero,
+.hero2,
+.hero3 {
+    scroll-snap-align: start;
+}
 
 h1 {
     font-family: "Bebas Neue" , sans-serif;
@@ -99,7 +104,7 @@ pre {
 }
 
 .juice {
-    z-index: 10;
+    z-index: 1;
     position: absolute;
     transform: rotateX(1deg) rotateY(-1deg);
 
@@ -160,11 +165,12 @@ pre {
     h4 {
         font-family: "Montserrat" , sans-serif;
         color: white;
-        font-size: 15px;
+        font-size: 10px;
     }
     h5 {
         font-family: "Montserrat" , sans-serif;
         color: white;
+        font-size: 20px;
     }
     h6 {
         font-family: "Bebas Neue" , sans-serif;
@@ -181,6 +187,10 @@ pre {
     }
     .arrow {
         height: 2rem;
+    }
+    .buy {
+        height: 2rem;
+        width: 5rem;
     }
 }
 
@@ -285,6 +295,9 @@ pre {
         display: none;
         color: white;
     }
+    .hero3 {
+        justify-content: center;
+    }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
     h1 {
@@ -309,5 +322,6 @@ pre {
         color: white;
     }
 }
+
 
 
