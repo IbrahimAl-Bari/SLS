@@ -127,7 +127,6 @@ const App = () => {
                 trigger: ".juice",
                 start: "+=1850",
                 scrub: 2,
-                markers: true,
             }
         });
 
